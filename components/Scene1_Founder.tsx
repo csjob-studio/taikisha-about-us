@@ -81,7 +81,7 @@ export default function Scene1_Founder() {
                     className="object-cover object-top" // Force alignment to top
                 />
                 {/* Gradients: Increased opacity slightly for visibility, but kept gradients for text safety */}
-                <div className="absolute inset-0 bg-black/40 backdrop-blur-[0px]" /> {/* Dark overlay for better text contrast */}
+                <div className="absolute inset-0 bg-black/20 backdrop-blur-[0px]" /> {/* Dark overlay for better text contrast */}
             </div>
 
             {/* Moving Clouds Layer (z-[-5]) */}
@@ -104,37 +104,47 @@ export default function Scene1_Founder() {
                     </div>
 
                     {/* Founder Director Box - Right Side, placed at top with margin-top */}
-                    <div ref={card1Ref} className="bg-blue-600/80 backdrop-blur-md p-5 border-l-[6px] border-blue-900 w-full max-w-[33rem] self-center lg:self-end lg:ml-10 mt-12">
-                        <div className="mb-1">
-                            <h2 className="text-3xl lg:text-5xl font-bebas font-bold text-white tracking-wide leading-none">
-                                N.A. MAKWANA
-                            </h2>
-                            <p className="text-xs font-bold text-blue-100 uppercase tracking-[0.3em] mt-1">
-                                Founder Director
-                            </p>
+                    <div
+                        ref={card1Ref}
+                        className="border-l-[6px] border-blue-600/60 lg:ml-10 mt-12"
+                    >
+                        <div className="bg-blue-600/60 p-6 ml-1 w-full max-w-[42rem] self-center lg:self-end">
+                            <div className=" ml-6">
+                                <h2 className="text-[24pt] font-roboto font-bold italic text-white leading-none tracking-wide">
+                                    N.A. MAKWANA
+                                </h2>
+                                <p className="text-[18pt] font-roboto font-medium italic text-white uppercase tracking-[0.3em] mt-1">
+                                    Founder Director
+                                </p>
+                            </div>
+                            <blockquote className="text-[20pt] font-roboto font-light italic text-white leading-none mt-4 border-t border-white/20 pt-4 text-justify [text-align-last:justify] w-full">
+                                “Time is the greatest asset in human life and to be well planned and not wasted. Every man striving to achieve highest quality with ethical working can change not only the nation, but also the whole world.”
+                            </blockquote>
                         </div>
-                        <blockquote className="text-white italic font-light text-base leading-relaxed mt-2 border-t border-white/20 pt-2 text-justify [text-align-last:justify] w-full">
-                            "Time is the greatest asset in human life and to be well planned and not wasted.
-                            Every man striving to achieve highest quality with ethical working can change
-                            not only the nation, but also the whole world."
-                        </blockquote>
                     </div>
                 </div>
 
                 {/* Bottom Row: Customers First Box with margin-left */}
-                <div ref={card2Ref} className="bg-emerald-600/80 backdrop-blur-md text-white p-5 border-l-[6px] border-emerald-900 w-full max-w-2xl mt-10 self-start shadow-lg ">
-                    <h3 className="text-3xl font-bebas font-bold mb-2 text-white tracking-widest border-b border-white/20 pb-2">
-                        CUSTOMERS FIRST
-                    </h3>
-                    <div className="space-y-1 text-emerald-50 leading-relaxed font-medium">
-                        <p className="text-justify [text-align-last:justify] text-[0.938rem]">
-                            Customers are defined as Overall Society in a broad sense Spirit of &quot;Customers First&quot; is to win
-                            persistent trust from the customer, To achieve this goal, we have to follow our own conscience and
-                            make the utmost efforts in every doing based on the belief that the behaviour of individuals or the
-                            company will bring benefit and happiness to one&apos;s counterpart.
-                        </p>
-                    </div>
-                </div>
+<div
+  ref={card2Ref}
+  className="border-l-[6px] border-emerald-600/60 lg:ml-10 mt-12"
+>
+  <div className="bg-emerald-600/60 p-6 ml-1 w-full max-w-[42rem] self-start shadow-lg">
+    <div className="ml-6">
+      <h3 className="text-[24pt] font-roboto font-bold text-white tracking-wide border-b border-white/20 pb-2 mb-4">
+        CUSTOMERS FIRST
+      </h3>
+    </div>
+    <div className="space-y-1 leading-relaxed">
+      <p className="text-[20pt] font-roboto font-light text-white text-justify [text-align-last:justify]">
+        Customers are defined as Overall Society in a broad sense. The spirit of "Customers First" is to win
+        persistent trust from the customer. To achieve this goal, we have to follow our own conscience and
+        make the utmost efforts in every doing, based on the belief that the behaviour of individuals or the
+        company will bring benefit and happiness to one’s counterpart.
+      </p>
+    </div>
+  </div>
+</div>
             </div>
 
         </section>
