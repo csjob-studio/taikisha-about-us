@@ -135,6 +135,7 @@ function GlobeContent({ activeLocation, setActiveLocation }: GlobeContentProps) 
                     {...loc}
                     radius={2.01}
                     isActive={activeLocation === loc.Office} // Use Office as ID
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     onClick={(e: any) => {
                         e.stopPropagation();
                         // Toggle: if clicked active, close it; otherwise open it

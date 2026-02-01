@@ -1,6 +1,6 @@
 'use client';
 
-import { useLayoutEffect, useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import NextImage from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -12,13 +12,11 @@ const FRAME_COUNT = 100; // Total number of frames in the sequence
 const IMAGE_FOLDER = '/images/scene3/sequence/';
 const IMAGE_PREFIX = 'frame_'; // e.g., frame_0001.jpg
 const IMAGE_EXTENSION = 'png';
-const SCROLL_DISTANCE = 6000; // Total scroll pixel distance to play the sequence
 
 export default function Scene3_Map() {
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const imagesRef = useRef<HTMLImageElement[]>([]);
-    const frameRef = useRef({ current: 0 });
     const [isLoaded, setIsLoaded] = useState(false);
 
     // 1. Preload Images
@@ -68,58 +66,9 @@ export default function Scene3_Map() {
         loadImages();
     }, []);
 
-    // 2. Render Function
-    const renderFrame = (index: number) => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
-
-        // Ensure Canvas Dimensions Match Window (Full Screen)
-        const width = canvas.width;
-        const height = canvas.height;
-
-        const img = imagesRef.current[index];
-
-        // Clear Canvas (Transparent)
-        ctx.clearRect(0, 0, width, height);
-
-        if (img && img.complete && img.naturalHeight !== 0) {
-            // Draw Image (Cover Fit with Vertical Parallax)
-            const hRatio = width / img.width;
-            const vRatio = height / img.height;
-            const ratio = Math.max(hRatio, vRatio);
-
-            const scaledWidth = img.width * ratio;
-            const scaledHeight = img.height * ratio;
-
-            const centerShift_x = (width - scaledWidth) / 2;
-
-            // Vertical Parallax Logic
-            let centerShift_y = 0; // Default: top aligned
-
-            if (scaledHeight > height) {
-                // If image is taller than canvas, pan from Top to Bottom
-                const progress = index / (FRAME_COUNT - 1);
-                const maxY = 0; // Top aligned
-                const minY = height - scaledHeight; // Bottom aligned
-                centerShift_y = maxY + (minY - maxY) * progress;
-            } else {
-                // If image fits within canvas, center it
-                centerShift_y = (height - scaledHeight) / 2;
-            }
-
-            ctx.drawImage(
-                img,
-                0, 0, img.width, img.height,
-                centerShift_x, centerShift_y, scaledWidth, scaledHeight
-            );
-        } else {
-            // Fallback: Draw Placeholder
-            // ... (keeping fallback plain logic if needed, or remove)
-        }
-    };
+    // renderFrame functionality removed as it was unused and causing lint errors
+    // If you need to restore the sequence logic, ensure renderFrame is called via GSAP scrollTrigger
+    // const renderFrame = (index: number) => { ... }
 
     // ... (GSAP and Resize hooks remain same)
 

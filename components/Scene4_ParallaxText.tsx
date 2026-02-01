@@ -59,9 +59,9 @@ export default function Scene4_ParallaxText() {
                     <div ref={contentRef} className="text-white max-w-6xl mx-auto px-4 md:px-0">
                         <div className="space-y-8 text-lg md:text-xl font-light italic text-slate-100 leading-relaxed tracking-wide drop-shadow-lg text-justify">
                             <p>
-                                Guided by our Mission Statement, "Customers First," we are committed to our Corporate Philosophy:
-                                "Establish a company which can continuously grow and contribute to society" and
-                                "Establish an attractive company." With our core strength in environmental technologies related
+                                Guided by our Mission Statement, &quot;Customers First,&quot; we are committed to our Corporate Philosophy:
+                                &quot;Establish a company which can continuously grow and contribute to society&quot; and
+                                &quot;Establish an attractive company.&quot; With our core strength in environmental technologies related
                                 to energy, air, and water, we are actively expanding our business on a global scale.
                             </p>
 
@@ -69,8 +69,8 @@ export default function Scene4_ParallaxText() {
                                 This fiscal year, alongside our three-year medium-term management plan, we have formulated our
                                 first-ever Long-term Management Plan (10-year plan) to achieve significant growth over a longer
                                 term, recognizing that our company has long contributed to social sustainability through our
-                                business activities. In this plan, we express our vision for 2035 as "Be Engineering," aiming to
-                                become a "Global Engineering Company Supporting Sustainable Industrial Innovation."
+                                business activities. In this plan, we express our vision for 2035 as &quot;Be Engineering,&quot; aiming to
+                                become a &quot;Global Engineering Company Supporting Sustainable Industrial Innovation.&quot;
                             </p>
 
                             <p>
@@ -89,7 +89,7 @@ export default function Scene4_ParallaxText() {
                             </p>
 
                             <p className="font-semibold text-yellow-400 text-right">
-                                - "Mr. Masashi Osada"
+                                - &quot;Mr. Masashi Osada&quot;
                             </p>
                         </div>
                     </div>

@@ -1,6 +1,5 @@
 import Scene1_Founder from "@/components/Scene1_Founder";
 import Scene2_Timeline from "@/components/Scene2_Timeline";
-import Scene3_Map from "@/components/Scene3_Map";
 import Scene4_ParallaxText from "@/components/Scene4_ParallaxText";
 import Scene5_Directory from "@/components/Scene5_Directory";
 import FloatingClouds from "@/components/FloatingClouds";
@@ -20,7 +19,6 @@ export default function Home() {
         <div className="section-snap">
           <Scene2_Timeline />
         </div>
-        {/* <Scene3_Map /> */}
         <div className="section-snap">
           <Scene3_Map_Sequence />
         </div>

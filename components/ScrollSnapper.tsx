@@ -27,7 +27,7 @@ export default function ScrollSnapper() {
                         const currentPos = totalScroll * progress;
 
                         // Find the closest section top
-                        const startData = sections.map(s => s.offsetTop);
+                        // const startData = sections.map(s => s.offsetTop); // Unused
                         // Assumption: Sections are stacked. The "height" or "bottom" is the next section's top. 
                         // Or we can get offsetHeight. Let's use offsetHeight for accuracy.
                         const sectionData = sections.map(s => ({

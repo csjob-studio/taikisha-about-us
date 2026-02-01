@@ -145,7 +145,9 @@ export default function Scene2_Timeline() {
             // 2. Move Arrow Head along the VISIBLE path (Correct Coordinates)
             tl.to(arrowRef.current, {
                 motionPath: {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     path: motionPathRef.current as any,
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     align: motionPathRef.current as any,
                     autoRotate: true,
                     alignOrigin: [0.5, 0.5],
