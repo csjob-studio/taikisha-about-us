@@ -41,7 +41,6 @@ export default function Scene4_ParallaxText() {
                         className="object-cover"
                         priority
                     />
-                    <div className="absolute inset-0 bg-black/40" /> {/* Slight overlay for text readability */}
                 </div>
             </div>
 

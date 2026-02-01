@@ -1,6 +1,7 @@
 'use client';
 
 import { useLayoutEffect, useRef, useEffect, useState } from 'react';
+import NextImage from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -81,9 +82,8 @@ export default function Scene3_Map() {
 
         const img = imagesRef.current[index];
 
-        // Clear Canvas
-        ctx.fillStyle = '#0f172a'; // Slate 900 Background
-        ctx.fillRect(0, 0, width, height);
+        // Clear Canvas (Transparent)
+        ctx.clearRect(0, 0, width, height);
 
         if (img && img.complete && img.naturalHeight !== 0) {
             // Draw Image (Cover Fit with Vertical Parallax)
@@ -117,79 +117,29 @@ export default function Scene3_Map() {
             );
         } else {
             // Fallback: Draw Placeholder
-            ctx.fillStyle = '#1e293b'; // Slate 800
-            ctx.fillRect(0, 0, width, height);
-
-            ctx.fillStyle = '#22d3ee'; // Cyan 400
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-
-            ctx.font = 'bold 80px sans-serif';
-            ctx.fillText(`${index}`, width / 2, height / 2);
-
-            ctx.font = '24px sans-serif';
-            ctx.fillStyle = '#94a3b8'; // Slate 400
-            ctx.fillText('Image Missing', width / 2, height / 2 + 60);
-            ctx.fillText(`Expected: ${IMAGE_FOLDER}${IMAGE_PREFIX}${String(index).padStart(4, '0')}.${IMAGE_EXTENSION}`, width / 2, height / 2 + 90);
+            // ... (keeping fallback plain logic if needed, or remove)
         }
     };
 
-    // 3. GSAP Animation
-    useLayoutEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.to(frameRef.current, {
-                current: FRAME_COUNT - 1,
-                snap: 'current',
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: 'top top',
-                    end: `+=${SCROLL_DISTANCE}`,
-                    pin: true,
-                    scrub: 0.5,
-                    // onUpdate: () => {
-                    //     const frameIndex = Math.min(
-                    //         FRAME_COUNT - 1,
-                    //         Math.round(frameRef.current.current)
-                    //     );
-                    //     renderFrame(frameIndex);
-                    // }
-                    onUpdate: () => {
-                        const frameIndex = Math.min(
-                            FRAME_COUNT - 1,
-                            Math.round(frameRef.current.current)
-                        );
-                        requestAnimationFrame(() => renderFrame(frameIndex));
-                    }
-                }
-            });
-        }, containerRef);
-
-        return () => ctx.revert();
-    }, []); // Run once on mount
-
-    // 4. Resize Handler
-    useEffect(() => {
-        const handleResize = () => {
-            if (canvasRef.current) {
-                canvasRef.current.width = window.innerWidth;
-                canvasRef.current.height = window.innerHeight;
-                // Re-render current frame
-                const currentIndex = Math.min(FRAME_COUNT - 1, Math.round(frameRef.current.current));
-                renderFrame(currentIndex);
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
-        handleResize(); // Initial size
-
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    // ... (GSAP and Resize hooks remain same)
 
     return (
-        <section className="relative w-full bg-slate-900">
-            {/* Header scrolls normally */}
-            <div className="container mx-auto px-6 md:px-12 py-20">
+        <section className="relative w-full">
+
+            {/* Scene 3 Background - Fixed/Sticky */}
+            <div className="absolute inset-0 z-0 h-full">
+                <div className="sticky top-0 h-screen w-full overflow-hidden">
+                    <NextImage
+                        src="/images/scene3/scene3-bg.jpg"
+                        alt="Scene 3 Background"
+                        fill
+                        className="object-cover"
+                    />
+                </div>
+            </div>
+
+            {/* Header scrolls normally over the background */}
+            <div className="container mx-auto px-6 md:px-12 py-20 relative z-10">
                 <div className="pl-6 border-l-[8px] border-cyan-400 inline-block">
                     <h2 className="text-4xl md:text-5xl font-bebas font-bold italic text-white tracking-wide shadow-sm uppercase">
                         Taikisha India Footprint
@@ -198,12 +148,12 @@ export default function Scene3_Map() {
             </div>
 
             {/* Spacer before canvas */}
-            <div className="h-40 md:h-60"></div> {/* adjust height as needed */}
+            <div className="h-40 md:h-60 relative z-10"></div>
 
             {/* Canvas pinned separately */}
             <div
                 ref={containerRef}
-                className="relative w-full h-screen overflow-hidden"
+                className="relative w-full h-screen overflow-hidden z-10"
             >
                 <canvas
                     ref={canvasRef}

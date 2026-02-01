@@ -26,7 +26,6 @@ export default function Scene5_Directory() {
                     className="object-cover object-center"
                     priority
                 />
-                <div className="absolute inset-0 bg-black/40" />
 
                 {/* Clouds */}
                 <div className="absolute inset-0 z-[1] pointer-events-none">

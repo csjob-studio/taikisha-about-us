@@ -31,8 +31,10 @@ const timelineData = [
 export default function Scene2_Timeline() {
     const containerRef = useRef<HTMLDivElement>(null);
     const svgRef = useRef<SVGSVGElement>(null);
-    const pathRef = useRef<SVGPathElement>(null);
+    const maskPathRef = useRef<SVGPathElement>(null); // For Drawing Animation (Mask)
+    const motionPathRef = useRef<SVGPathElement>(null); // For Arrow Guide & Length
     const arrowRef = useRef<HTMLDivElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null); // Added contentRef
 
     // State for responsive layout
     const [itemsPerRow, setItemsPerRow] = useState(3);
@@ -100,8 +102,6 @@ export default function Scene2_Timeline() {
         return d;
     };
 
-
-
     const getNodePosition = (index: number) => {
         const row = Math.floor(index / itemsPerRow);
         const colInRow = index % itemsPerRow;
@@ -118,42 +118,55 @@ export default function Scene2_Timeline() {
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-
-            // Master Timeline for Draw + Arrow
+            // Master Timeline
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: 'top center', // Start drawing when section hits center
-                    end: 'bottom bottom', // Finish when section ends
+                    pin: true,
+                    start: 'top top',
+                    end: '+=4000',
                     scrub: 1,
                 }
             });
 
             // 1. Draw Line (Reveal Mask)
-            const length = pathRef.current?.getTotalLength() || 0;
-            gsap.set(pathRef.current, { strokeDasharray: length, strokeDashoffset: length });
+            // Use the VISIBLE path for length (safer physics)
+            const length = motionPathRef.current?.getTotalLength() || 0;
 
-            tl.to(pathRef.current, {
+            // Set initial state on the MASK path
+            gsap.set(maskPathRef.current, { strokeDasharray: length, strokeDashoffset: length });
+
+            tl.to(maskPathRef.current, {
                 strokeDashoffset: 0,
                 ease: 'none',
-                duration: 10, // Arbitrary duration, scrubbed
+                duration: 10,
             }, 0);
 
-            // 2. Move Arrow Head along the SAME path
-            // We use the Mask Path as the MotionPath
+            // 2. Move Arrow Head along the VISIBLE path (Correct Coordinates)
             tl.to(arrowRef.current, {
                 motionPath: {
-                    path: pathRef.current as any, // eslint-disable-line @typescript-eslint/no-explicit-any
-                    align: pathRef.current as any, // eslint-disable-line @typescript-eslint/no-explicit-any
+                    path: motionPathRef.current as any,
+                    align: motionPathRef.current as any,
                     autoRotate: true,
                     alignOrigin: [0.5, 0.5],
                 },
                 ease: 'none',
-                duration: 10, // Match duration
+                duration: 10,
             }, 0);
 
+            // 3. Parallax Effect
+            tl.to(contentRef.current, {
+                y: () => {
+                    const contentHeight = contentRef.current?.offsetHeight || 0;
+                    const viewportHeight = window.innerHeight;
+                    const diff = contentHeight - viewportHeight;
+                    return diff > 0 ? -(diff + 100) : -50;
+                },
+                ease: 'none',
+                duration: 15,
+            }, 0);
 
-            // 3. Node Activations - Sync with Line Progress
+            // 4. Node Activations - Sync with Line Progress
             // We select all nodes and animate them as part of the main scrub/timeline
             const nodes = gsap.utils.toArray('.timeline-node');
             const totalNodes = nodes.length;
@@ -174,20 +187,20 @@ export default function Scene2_Timeline() {
                     {
                         scale: 1,
                         opacity: 1,
-                        duration: 0.2, // Faster pop-in for snappier feel
-                        ease: 'back.out(2)',
+                        duration: 0.1, // Faster pop-in for snappier feel
+                        ease: 'back.out(0)',
                     },
                     startTime // Insert at specific time
                 );
             });
 
+            // ...
         }, containerRef);
         return () => ctx.revert();
     }, []);
 
     return (
-        <section ref={containerRef} className="relative w-full pt-10 pb-40 font-outfit"> {/* Removed overflow-hidden for sticky bg */}
-
+        <section ref={containerRef} className="relative w-full min-h-screen pt-10 pb-30 font-outfit">
             {/* Scene 2 Background - Sticky Wrapper */}
             <div className="absolute inset-0 z-0">
                 <div className="sticky top-0 h-screen w-full overflow-hidden">
@@ -204,9 +217,7 @@ export default function Scene2_Timeline() {
                 </div>
             </div>
 
-            {/* Content scrolls RELATIVELY over the sticky background */}
-            <div className="container mx-auto px-6 md:px-12 relative z-10">
-
+            <div ref={contentRef} className="container mx-auto px-6 md:px-12 relative z-10 pt-[3rem]">
                 {/* Section Header - Left Aligned with One Color */}
                 <div className="mb-16 pl-6 border-l-[8px] border-yellow-400">
                     <h2 className="text-4xl md:text-5xl font-bebas font-bold italic text-white tracking-wide shadow-sm uppercase">
@@ -214,33 +225,50 @@ export default function Scene2_Timeline() {
                     </h2>
                 </div>
 
-                {/* Timeline Container */}
-                {/* Timeline Container - Dynamic Height */}
                 <div
                     className="relative w-full max-w-[1000px] mx-auto transition-all duration-500"
-                    style={{ height: itemsPerRow === 1 ? `${(timelineData.length * rowHeight) + 200}px` : '950px' }} // Taller for mobile list
+                    style={{ height: itemsPerRow === 1 ? `${(timelineData.length * rowHeight) + 200}px` : '950px' }}
                 >
-
-                    {/* SVG Layer */}
                     <div className="absolute inset-0 w-full h-full z-0">
                         <svg ref={svgRef} viewBox={`0 0 ${viewBoxWidth} ${itemsPerRow === 1 ? (timelineData.length * rowHeight) + 200 : 950}`} className="w-full h-full overflow-visible">
                             <defs>
                                 <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
                                     <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff" />
                                 </marker>
+                                {/* MASK DEFINITION */}
+                                <mask id="drawingMask">
+                                    <path
+                                        ref={maskPathRef} // USED FOR ANIMATION
+                                        d={generateZigZagPath()}
+                                        fill="none"
+                                        stroke="white"
+                                        strokeWidth="3"
+                                        strokeLinecap="round"
+                                    />
+                                </mask>
                             </defs>
 
-                            {/* Background Trace (Dotted White - Finer) */}
-                            <path d={generateZigZagPath()} fill="none" stroke="white" strokeWidth="1.5" strokeDasharray="6 6" opacity="0.4" markerEnd="url(#arrowhead)" />
-
-                            {/* Animated Progress Path (Solid White - Thinner) */}
+                            {/* Background Trace (Faint Dotted) */}
                             <path
-                                ref={pathRef}
+                                d={generateZigZagPath()}
+                                fill="none"
+                                stroke="white"
+                                strokeWidth="1.5"
+                                strokeDasharray="6 6"
+                                opacity="0.0"
+                                markerEnd="url(#arrowhead)"
+                            />
+
+                            {/* VISIBLE PATH (The Dotted Line we see) */}
+                            <path
+                                ref={motionPathRef} // USED FOR MOTION GUIDE
                                 d={generateZigZagPath()}
                                 fill="none"
                                 stroke="#ffffff"
-                                strokeWidth="3"
+                                strokeWidth="2"
                                 strokeLinecap="round"
+                                strokeDasharray="6 6"
+                                mask="url(#drawingMask)"
                             />
                         </svg>
                     </div>
@@ -282,6 +310,6 @@ export default function Scene2_Timeline() {
 
                 </div>
             </div>
-        </section>
+        </section >
     );
 }

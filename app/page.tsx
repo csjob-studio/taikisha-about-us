@@ -6,19 +6,33 @@ import Scene5_Directory from "@/components/Scene5_Directory";
 import FloatingClouds from "@/components/FloatingClouds";
 import Footer from "@/components/Footer";
 import Scene3_Map_Sequence from "@/components/Scene3_Map_Sequence";
+import ScrollSnapper from "@/components/ScrollSnapper";
 
 export default function Home() {
   return (
-    <main className="w-full min-h-screen bg-neutral-50 relative">
+    <main className="w-full min-h-screen bg-slate-900 relative">
+      <ScrollSnapper />
       <FloatingClouds />
-      <div className="relative z-10">
-        <Scene1_Founder />
-        <Scene2_Timeline />
+      <div className="relative z-10 w-full">
+        <div className="section-snap">
+          <Scene1_Founder />
+        </div>
+        <div className="section-snap">
+          <Scene2_Timeline />
+        </div>
         {/* <Scene3_Map /> */}
-        <Scene3_Map_Sequence />
-        <Scene4_ParallaxText />
-        <Scene5_Directory />
-        <Footer />
+        <div className="section-snap">
+          <Scene3_Map_Sequence />
+        </div>
+        <div className="section-snap">
+          <Scene4_ParallaxText />
+        </div>
+        <div className="section-snap">
+          <Scene5_Directory />
+        </div>
+        <div className="section-snap">
+          <Footer />
+        </div>
       </div>
     </main>
   );
