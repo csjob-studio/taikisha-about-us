@@ -5,7 +5,7 @@ import Scene5_Directory from "@/components/Scene5_Directory";
 import FloatingClouds from "@/components/FloatingClouds";
 import Footer from "@/components/Footer";
 import ScrollSnapper from "@/components/ScrollSnapper";
-import Scene3_Map from "@/components/Scene3_Map_Sequence";
+import Scene3_IndiaMap from "@/components/Scene3_IndiaMap";
 
 export default function Home() {
   return (
@@ -22,8 +22,11 @@ export default function Home() {
         {/* <div className="section-snap">
           <Scene3_Map_Sequence />
         </div> */}
-        <div className="section-snap">
+        {/* <div className="section-snap">
           <Scene3_Map />
+        </div> */}
+        <div className="section-snap">
+          <Scene3_IndiaMap />
         </div>
         <div className="section-snap">
           <Scene4_ParallaxText />

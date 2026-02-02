@@ -79,7 +79,25 @@ export default function Scene1_Founder() {
                 <div className="flex flex-col lg:flex-row w-full items-start justify-between">
 
                     {/* Founder Image - Left Side with margin-left */}
-                    <div ref={imageWrapperRef} className="relative w-[240px] aspect-[3/4] drop-shadow-2xl mb-12 lg:mb-0 self-center lg:self-start ml-12">
+                    {/* <div ref={imageWrapperRef} className="relative w-[240px] aspect-[3/4] drop-shadow-2xl mb-12 lg:mb-0 self-center lg:self-start ml-12"> */}
+                  <div
+  ref={imageWrapperRef}
+  className="
+    relative
+    w-[280px]
+    md:w-[320px]
+    lg:w-[380px]
+    xl:w-[420px]
+    aspect-[3/4]
+    drop-shadow-2xl
+    mb-12
+    lg:mb-0
+    self-center
+    lg:self-start
+    ml-12
+  "
+>
+
                         <Image
                             src="/images/founder.png"
                             alt="N.A. Makwana - Founder Director"

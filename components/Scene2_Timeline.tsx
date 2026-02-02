@@ -125,8 +125,10 @@ export default function Scene2_Timeline() {
                 scrollTrigger: {
                     trigger: containerRef.current,
                     start: 'top center', // Start drawing when section hits center
-                    end: 'bottom bottom', // Finish when section ends
-                    scrub: 1,
+                    // end: 'bottom bottom', // Finish when section ends
+                    end: '+=1000', 
+                    scrub: 2
+                    // scrub: 1,
                 }
             });
 
@@ -187,7 +189,7 @@ export default function Scene2_Timeline() {
     }, []);
 
     return (
-        <section ref={containerRef} className="relative w-full pt-10 pb-40 font-outfit"> {/* Removed overflow-hidden for sticky bg */}
+        <section ref={containerRef} className="relative w-full pt-20 pb-40 font-outfit"> {/* Removed overflow-hidden for sticky bg */}
 
             {/* Scene 2 Background - Sticky Wrapper */}
             <div className="absolute inset-0 z-0">
@@ -229,17 +231,17 @@ export default function Scene2_Timeline() {
                                 <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
                                     <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff" />
                                     {/* NEW: The Mask Definition */}
-    <mask id="drawingMask">
-        {/* This is the animating part */}
-        <path 
-            ref={pathRef} // <--- MOVE THE REF HERE
-            d={generateZigZagPath()} 
-            fill="none" 
-            stroke="white" 
-            strokeWidth="3" 
-            strokeLinecap="round" 
-        />
-    </mask>
+                                    <mask id="drawingMask">
+                                        {/* This is the animating part */}
+                                        <path
+                                            ref={pathRef} // <--- MOVE THE REF HERE
+                                            d={generateZigZagPath()}
+                                            fill="none"
+                                            stroke="white"
+                                            strokeWidth="3"
+                                            strokeLinecap="round"
+                                        />
+                                    </mask>
                                 </marker>
                                 {/* MASK DEFINITION */}
                                 <mask id="drawingMask">
@@ -255,25 +257,25 @@ export default function Scene2_Timeline() {
                             </defs>
 
                             {/* Background Trace (Dotted White - Finer) */}
-                            <path 
-                            d={generateZigZagPath()} 
-                            fill="none" 
-                            stroke="white" 
-                            strokeWidth="1.5" 
-                            strokeDasharray="6 6" 
-                            opacity="0" 
-                            markerEnd="url(#arrowhead)" 
+                            <path
+                                d={generateZigZagPath()}
+                                fill="none"
+                                stroke="white"
+                                strokeWidth="1.5"
+                                strokeDasharray="6 6"
+                                opacity="0"
+                                markerEnd="url(#arrowhead)"
                             />
 
                             {/* Animated Progress Path (Solid White - Thinner) */}
                             <path
                                 d={generateZigZagPath()}
-    fill="none"
-    stroke="#ffffff"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeDasharray="6 6" // <--- The Dots!
-    mask="url(#drawingMask)" // <--- Apply the mask
+                                fill="none"
+                                stroke="#ffffff"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeDasharray="6 6" // <--- The Dots!
+                                mask="url(#drawingMask)" // <--- Apply the mask
                             />
                         </svg>
                     </div>
@@ -299,7 +301,7 @@ export default function Scene2_Timeline() {
 
                                 {/* Description - ALWAYS BELOW */}
                                 <div className="absolute top-6 md:top-8 w-40 px-2 text-center z-10">
-                                    <span className="block text-[10px] md:text-xs font-bold italic text-white/80 uppercase tracking-wider">{item.desc}</span>
+                                    <span className="block text-[12px] md:text-[15px] lg:text-[15px]  font-bold italic text-white/80 uppercase tracking-wider">{item.desc}</span>
                                 </div>
                             </div>
                         );
