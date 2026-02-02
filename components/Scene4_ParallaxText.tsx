@@ -29,7 +29,7 @@ export default function Scene4_ParallaxText() {
     }, []);
 
     return (
-        <section ref={containerRef} className="relative w-full min-h-[150vh] bg-slate-900 font-outfit">
+        <section ref={containerRef} className="relative w-full pt-20 min-h-[150vh] bg-slate-900 font-outfit">
 
             {/* Sticky Background Layer */}
             <div className="absolute inset-0 z-0">
@@ -142,7 +142,7 @@ export default function Scene4_ParallaxText() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
                             {/* MANAGEMENT */}
-                            <div className="relative bg-[#e0565b] p-8 text-white shadow-lg rounded-sm">
+                            <div className="relative bg-[#e0565b]/80 p-8 text-white shadow-lg rounded-sm">
                                 <div className="absolute right-0 top-0 h-full w-1.5 bg-[#c73c41]" />
                                 <h3 className="text-2xl font-bold font-bebas uppercase mb-4 tracking-wider">
                                     Management
@@ -156,7 +156,7 @@ export default function Scene4_ParallaxText() {
                             </div>
 
                             {/* BUSINESS */}
-                            <div className="relative bg-[#58b7a1] p-8 text-white shadow-lg rounded-sm">
+                            <div className="relative bg-[#58b7a1]/80 p-8 text-white shadow-lg rounded-sm">
                                 <div className="absolute left-0 top-0 h-full w-1.5 bg-[#3f9d89]" />
                                 <h3 className="text-2xl font-bold font-bebas uppercase mb-4 tracking-wider">
                                     Business
@@ -172,8 +172,8 @@ export default function Scene4_ParallaxText() {
                         </div>
 
                         {/* Bottom Full Card */}
-                        <div className="bg-[#e3bb2b] p-8 md:p-10 text-[#1f2933] shadow-lg rounded-sm">
-                            <h3 className="text-2xl font-bold font-bebas uppercase mb-8 tracking-wider border-b border-[#1f2933]/10 pb-4">
+                        <div className="bg-[#e3bb2b]/80 p-8 md:p-10 shadow-lg rounded-sm">
+                            <h3 className="text-2xl font-bold font-bebas uppercase mb-8 tracking-wider border-b border-[#fff]/10 pb-4">
                                 Mid-Term and Long-Term Vision
                             </h3>
 
@@ -181,7 +181,7 @@ export default function Scene4_ParallaxText() {
 
                                 {/* PAINT FINISHING SYSTEM */}
                                 <div className="space-y-3">
-                                    <h4 className="font-bold uppercase text-lg tracking-wide border-l-4 border-[#1f2933] pl-3">
+                                    <h4 className="font-bold uppercase text-lg tracking-wide border-l-4 border-[#fff] pl-3">
                                         Paint Finishing System
                                     </h4>
                                     <ul className="list-disc pl-5 space-y-2 opacity-90 leading-relaxed font-medium">
@@ -193,7 +193,7 @@ export default function Scene4_ParallaxText() {
 
                                 {/* INNOVATIVE ENGINEERING */}
                                 <div className="space-y-3">
-                                    <h4 className="font-bold uppercase text-lg tracking-wide border-l-4 border-[#1f2933] pl-3">
+                                    <h4 className="font-bold uppercase text-lg tracking-wide border-l-4 border-[#fff] pl-3">
                                         Innovative Engineering
                                     </h4>
                                     <p className="opacity-90 leading-relaxed font-medium">
@@ -204,7 +204,7 @@ export default function Scene4_ParallaxText() {
 
                                 {/* DIVERSITY & INCLUSION */}
                                 <div className="space-y-3">
-                                    <h4 className="font-bold uppercase text-lg tracking-wide border-l-4 border-[#1f2933] pl-3">
+                                    <h4 className="font-bold uppercase text-lg tracking-wide border-l-4 border-[#fff] pl-3">
                                         Diversity & Inclusion
                                     </h4>
                                     <p className="opacity-90 leading-relaxed font-medium">

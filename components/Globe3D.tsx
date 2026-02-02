@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useMemo, useState } from 'react';
+import React, { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useLoader } from '@react-three/fiber';
 import { OrbitControls, Html, useCursor } from '@react-three/drei';
 import * as THREE from 'three';
@@ -67,8 +67,11 @@ function Marker({ lat, lng, Office, company, city, country, address, phone, fax,
 
             {/* Popover / Tooltip */}
             {(hovered || isActive) && (
-                <Html position={[0, 0, -pinHeight * 1.5]} style={{ pointerEvents: 'none' }}>
+                // <Html position={[0, 0, -pinHeight * 1.5]} style={{ pointerEvents: 'none' }}>
+   <Html position={[0, 0, -pinHeight * 1.5]} style={{ pointerEvents: 'none' }}>
                     <div className="bg-slate-900/95 text-white p-2 rounded-md border border-blue-500/30 backdrop-blur-md shadow-xl w-56 transform -translate-x-1/2 -translate-y-full pointer-events-auto text-left">
+
+
                         <div className="border-b border-white/20 pb-1 mb-1.5">
                             <h4 className="font-bebas text-base tracking-widest text-yellow-500 leading-none mb-0.5 whitespace-normal">
                                 {Office}
@@ -119,13 +122,22 @@ function GlobeContent({ activeLocation, setActiveLocation }: GlobeContentProps) 
             {/* The Earth Sphere */}
             <mesh onClick={(e) => { e.stopPropagation(); setActiveLocation(null); }}>
                 <sphereGeometry args={[2, 64, 64]} />
-                <meshPhongMaterial
+                {/* <meshPhongMaterial
                     map={colorMap}
                     normalMap={normalMap}
                     specularMap={specularMap}
                     specular={new THREE.Color(0x555555)}
                     shininess={25}
+                /> */}
+                <meshStandardMaterial
+                    map={colorMap}
+                    normalMap={normalMap}
+                    roughness={0.6}
+                    metalness={0.05}
+                    emissive={new THREE.Color('#ffffff00')}
+                    emissiveIntensity={0}
                 />
+
             </mesh>
 
             {/* Render Markers */}
@@ -155,9 +167,21 @@ function GlobeContent({ activeLocation, setActiveLocation }: GlobeContentProps) 
                 maxPolarAngle={Math.PI - Math.PI / 3}
             />
 
-            <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} intensity={1} />
-            <pointLight position={[-10, -10, -10]} intensity={0.5} color="#3b82f6" />
+            <ambientLight intensity={1} />
+
+            <directionalLight
+                position={[5, 5, 5]}
+                intensity={1}
+                color="#ffffff05"
+            />
+
+            <directionalLight
+                position={[-5, -3, -5]}
+                intensity={0.9}
+                color="#93c5fd"
+            />
+
+
         </group>
     );
 }
@@ -201,6 +225,11 @@ export default function Globe3D() {
             <Canvas
                 camera={{ position: [0, 0, 5.5], fov: 45 }}
                 dpr={[1, 2]}
+                gl={{ alpha: true, antialias: true }}
+                onCreated={({ gl }) => {
+                    gl.toneMappingExposure = 1.25;
+                }}
+                style={{ background: 'transparent' }}
                 onPointerMissed={() => setActiveLocation(null)} // Close on click outside (empty space)
             >
                 <GlobeErrorBoundary fallback={<GlobeFallback />}>
@@ -210,5 +239,12 @@ export default function Globe3D() {
                 </GlobeErrorBoundary>
             </Canvas>
         </div>
+
+
+
+
+
+
+
     );
 }

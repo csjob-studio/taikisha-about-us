@@ -48,13 +48,21 @@ export default function CompanyDirectoryModal({ isOpen, onClose }: CompanyDirect
 
     // Portal to body to ensure it sits on top of EVERYTHING
     return createPortal(
+        // <div
+        //     className="fixed inset-0 z-[9999] flex justify-center bg-black/80 backdrop-blur-md overflow-y-auto"
+        //     data-lenis-prevent // explicitly tell Lenis to ignore this container
+        // >
         <div
-            className="fixed inset-0 z-[9999] flex justify-center bg-black/80 backdrop-blur-md overflow-y-auto"
-            data-lenis-prevent // explicitly tell Lenis to ignore this container
+            className="fixed inset-x-0 top-[80px] bottom-0 z-40
+             flex justify-center
+             bg-black/80 backdrop-blur-md overflow-y-auto"
+            data-lenis-prevent
         >
 
+
             {/* Modal Container Wrapper for centered alignment with scroll */}
-            <div className="relative w-full min-h-full flex items-center justify-center p-4 md:p-8">
+            {/* <div className="relative w-full min-h-full flex items-center justify-center p-4 md:p-8"> */}
+            <div className="relative w-full min-h-full flex justify-center p-4 md:p-8">
 
                 {/* Content Card */}
                 <div id="modal-content" className="relative w-full max-w-5xl bg-slate-900 text-white rounded-xl shadow-2xl border border-white/10 flex flex-col my-auto">
