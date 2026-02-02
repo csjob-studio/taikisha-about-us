@@ -6,6 +6,7 @@ import FloatingClouds from "@/components/FloatingClouds";
 import Footer from "@/components/Footer";
 import Scene3_Map_Sequence from "@/components/Scene3_Map_Sequence";
 import ScrollSnapper from "@/components/ScrollSnapper";
+import Scene3_Map from "@/components/Scene3_Map_Sequence";
 
 export default function Home() {
   return (
@@ -19,8 +20,11 @@ export default function Home() {
         <div className="section-snap">
           <Scene2_Timeline />
         </div>
-        <div className="section-snap">
+        {/* <div className="section-snap">
           <Scene3_Map_Sequence />
+        </div> */}
+        <div className="section-snap">
+          <Scene3_Map />
         </div>
         <div className="section-snap">
           <Scene4_ParallaxText />

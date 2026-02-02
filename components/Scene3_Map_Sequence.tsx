@@ -73,7 +73,7 @@ export default function Scene3_Map() {
     // ... (GSAP and Resize hooks remain same)
 
     return (
-        <section className="relative w-full">
+        <section className="relative w-full min-h-screen">
 
             {/* Scene 3 Background - Fixed/Sticky */}
             <div className="absolute inset-0 z-0 h-full">
