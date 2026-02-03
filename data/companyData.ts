@@ -36,7 +36,7 @@ export const companyLocations: CompanyLocation[] = [
     country: "India",
     city: "Gurugram",
     Office: "Head Office",
-    company: "Taikisha Engineering India Private Ltd.",
+    company: "TEI Taikisha Engineering India Private Ltd.",
     address: "Plot No.26, Udyog Vihar, Phase-4, Gurugram, Haryana, Pin-122015, India",
     phone: "91-124-234-8246",
     fax: "91-124-234-8247",
@@ -55,7 +55,7 @@ export const companyLocations: CompanyLocation[] = [
   {
     country: "India",
     city: "Manesar (Gurugram)",
-    Office: "Electrical & Automation Control Panel Plant Manesar",
+    Office: "TEI Electrical & Automation Control Panel Plant Manesar",
     company: "Taikisha Engineering India Private Ltd.",
     address: "Plot No.19, Sector-3, IMT Manesar, Gurugram-122050, India",
     lat: 28.47,
@@ -91,7 +91,7 @@ export const companyLocations: CompanyLocation[] = [
   {
     country: "India",
     city: "Hyderabad (Sangareddy District)",
-    Office: "Nicomac Taikisha Clean Rooms Private Limited",
+    Office: "TEI Nicomac Taikisha Clean Rooms Private Limited",
     company: "Nicomac Taikisha Clean Rooms Private Limited",
     address:
       "Plot No.116, IDA Bollaram, Near Miyapur, Sangareddy District, Hyderabad Medak Telangana 50232, India",

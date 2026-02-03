@@ -73,7 +73,7 @@ export default function Scene1_Founder() {
             {/* Moving Clouds Layer (z-[-5]) */}
             <FloatingClouds />
 
-            <div className="container mx-auto px-6 md:px-12 h-full flex flex-col relative z-10 pt-[10rem]">
+            <div className="container mx-auto px-6 md:px-12 h-full flex flex-col relative z-10 pt-[8rem]">
 
                 {/* Top Row: Founder Image + Founder Director Box */}
                 <div className="flex flex-col lg:flex-row w-full items-start justify-between">
@@ -86,8 +86,8 @@ export default function Scene1_Founder() {
     relative
     w-[280px]
     md:w-[320px]
-    lg:w-[380px]
-    xl:w-[420px]
+    lg:w-[350px]
+    xl:w-[380px]
     aspect-[3/4]
     drop-shadow-2xl
     mb-12
@@ -131,7 +131,7 @@ export default function Scene1_Founder() {
                 {/* Bottom Row: Customers First Box with margin-left */}
                 <div
                     ref={card2Ref}
-                    className="border-l-[6px] border-emerald-600/60 lg:ml-10 mt-12 mb-12"
+                    className="border-l-[6px] border-emerald-600/60 lg:ml-10 mb-12"
                 >
                     <div className="bg-emerald-600/60 p-6 ml-1 w-full max-w-[55rem] self-start shadow-lg">
                         <div className="ml-6">

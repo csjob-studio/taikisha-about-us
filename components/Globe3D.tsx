@@ -117,7 +117,7 @@ function GlobeContent({ activeLocation, setActiveLocation }: GlobeContentProps) 
     ]);
 
     return (
-        <group ref={globeRef}>
+        <group ref={globeRef} scale={0.7}>
             {/* The Earth Sphere */}
             <mesh onClick={(e) => { e.stopPropagation(); setActiveLocation(null); }}>
                 <sphereGeometry args={[2, 64, 64]} />

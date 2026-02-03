@@ -59,7 +59,6 @@ export default function CompanyDirectoryModal({ isOpen, onClose }: CompanyDirect
             data-lenis-prevent
         >
 
-
             {/* Modal Container Wrapper for centered alignment with scroll */}
             {/* <div className="relative w-full min-h-full flex items-center justify-center p-4 md:p-8"> */}
             <div className="relative w-full min-h-full flex justify-center p-4 md:p-8">
@@ -67,25 +66,60 @@ export default function CompanyDirectoryModal({ isOpen, onClose }: CompanyDirect
                 {/* Content Card */}
                 <div id="modal-content" className="relative w-full max-w-5xl bg-slate-900 text-white rounded-xl shadow-2xl border border-white/10 flex flex-col my-auto">
 
-                    {/* Close Button - Sticky inside card */}
-                    <div className="absolute top-4 right-4 z-50">
-                        <button
-                            onClick={onClose}
-                            className="bg-red-600/80 hover:bg-red-600 text-white p-2 rounded-full transition-colors duration-300 shadow-lg"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <line x1="18" y1="6" x2="6" y2="18"></line>
-                                <line x1="6" y1="6" x2="18" y2="18"></line>
-                            </svg>
-                        </button>
-                    </div>
-
                     {/* Content - Scrollable area inside card implies the card grows with content, but we are in a scrollable wrapper now */}
                     <div className="p-6 md:p-12">
                         <div className="space-y-10">
-                            <h2 className="text-4xl font-bold border-l-8 border-blue-600 pl-4 uppercase font-bebas tracking-wide">
+                            {/* <h2 className="text-4xl font-bold border-l-8 border-blue-600 pl-4 uppercase font-bebas tracking-wide">
                                 Taikisha Around the World
                             </h2>
+                             */}
+                             {/* Sticky Header */}
+{/* <div className="sticky top-0 z-20 bg-slate-900/95 backdrop-blur-md
+                border-b border-white/10 px-6 md:px-12 py-6">
+  <h2 className="text-4xl font-bold border-l-8 border-blue-600 pl-4
+                 uppercase font-bebas tracking-wide">
+    Taikisha Around the World
+  </h2>
+</div> */}
+
+{/* Sticky Header */}
+<div
+  className="sticky top-0 z-20
+             bg-slate-900/95 backdrop-blur-md
+             border-b border-white/10
+             px-6 md:px-12 py-6
+             flex items-center justify-between"
+>
+  <h2 className="text-4xl font-bold border-l-8 border-blue-600 pl-4
+                 uppercase font-bebas tracking-wide">
+    Taikisha Around the World
+  </h2>
+
+  {/* Close Button */}
+  <button
+    onClick={onClose}
+    className="ml-4 bg-red-600/80 hover:bg-red-600
+               text-white p-2 rounded-full
+               transition-colors duration-300 shadow-lg"
+    aria-label="Close"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+  </button>
+</div>
+
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {companies.map((company, index) => (
