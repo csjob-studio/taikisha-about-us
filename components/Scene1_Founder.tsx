@@ -22,11 +22,11 @@ export default function Scene1_Founder() {
             const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
             // Image Fade In + Up
-            tl.from(imageWrapperRef.current, {
-                y: 50,
-                opacity: 0,
-                duration: 1.2,
-            });
+            // tl.from(imageWrapperRef.current, {
+            //     y: 50,
+            //     opacity: 0,
+            //     duration: 1.2,
+            // });
 
             // Cards Staggered Entrance
             tl.from([card1Ref.current, card2Ref.current], {
@@ -38,16 +38,16 @@ export default function Scene1_Founder() {
 
             // 2. Parallax & Scroll Transition
             // Image Parallax (slower than scroll)
-            gsap.to(imageWrapperRef.current, {
-                y: 50,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: true,
-                },
-            });
+            // gsap.to(imageWrapperRef.current, {
+            //     y: 50,
+            //     ease: 'none',
+            //     scrollTrigger: {
+            //         trigger: containerRef.current,
+            //         start: 'top top',
+            //         end: 'bottom top',
+            //         scrub: true,
+            //     },
+            // });
 
             // Transition to Scene 2 (Exit Effect) - REMOVED to prevent white gap
             // Leaving only the parallax effects above.
@@ -80,9 +80,9 @@ export default function Scene1_Founder() {
 
                     {/* Founder Image - Left Side with margin-left */}
                     {/* <div ref={imageWrapperRef} className="relative w-[240px] aspect-[3/4] drop-shadow-2xl mb-12 lg:mb-0 self-center lg:self-start ml-12"> */}
-                  <div
-  ref={imageWrapperRef}
-  className="
+                    <div
+                        ref={imageWrapperRef}
+                        className="
     relative
     w-[280px]
     md:w-[320px]
@@ -96,7 +96,7 @@ export default function Scene1_Founder() {
     lg:self-start
     ml-12
   "
->
+                    >
 
                         <Image
                             src="/images/founder.png"
@@ -113,15 +113,17 @@ export default function Scene1_Founder() {
                         className="border-l-[6px] border-blue-600/60 lg:ml-10 mt-12"
                     >
                         <div className="bg-blue-600/60 p-6 ml-1 w-full max-w-[42rem] self-center lg:self-end">
-                            <div className=" ml-6">
-                                <h2 className="text-[24pt] font-roboto font-bold italic text-white leading-none tracking-wide">
+                            <div className="">
+                                <h2 className="text-[24pt] font-roboto font-bold text-white leading-none tracking-wide">
                                     N.A. MAKWANA
                                 </h2>
-                                <p className="text-[18pt] font-roboto font-medium italic text-white uppercase tracking-[0.3em] mt-1">
+
+                                <p className="text-[18pt] font-roboto font-bold text-white uppercase tracking-[0.3em] mt-1">
                                     Founder Director
                                 </p>
+
                             </div>
-                            <blockquote className="text-[15pt] font-roboto font-light italic text-white leading-relaxed mt-4 border-t border-white/20 pt-4 text-justify [text-align-last:justify] w-full">
+                            <blockquote className="text-[15pt] font-roboto font-bold text-white leading-relaxed mt-4 border-t border-white/20 pt-4 text-justify [text-align-last:justify] w-full">
                                 &ldquo;Time is the greatest asset in human life and to be well planned and not wasted. Every man striving to achieve highest quality with ethical working can change not only the nation, but also the whole world.&rdquo;
                             </blockquote>
                         </div>
@@ -134,7 +136,7 @@ export default function Scene1_Founder() {
                     className="border-l-[6px] border-emerald-600/60 lg:ml-10 mb-12"
                 >
                     <div className="bg-emerald-600/60 p-6 ml-1 w-full max-w-[55rem] self-start shadow-lg">
-                        <div className="ml-6">
+                        <div className="">
                             <h3 className="text-[24pt] font-roboto font-bold text-white tracking-wide border-b border-white/20 pb-2 mb-4">
                                 CUSTOMERS FIRST
                             </h3>
