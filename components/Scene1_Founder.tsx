@@ -66,7 +66,7 @@ export default function Scene1_Founder() {
                     src="/images/scene1-bg.jpg"
                     alt="Scene 1 Background"
                     fill
-                    className="object-cover object-top" // Force alignment to top
+                    className="" // object-cover object-top
                 />
             </div>
 
@@ -131,7 +131,7 @@ export default function Scene1_Founder() {
                 </div>
 
                 {/* Bottom Row: Customers First Box with margin-left */}
-                <div
+                {/* <div
                     ref={card2Ref}
                     className="border-l-[6px] border-emerald-600/60 lg:ml-10 mb-12"
                 >
@@ -150,7 +150,29 @@ export default function Scene1_Founder() {
                             </p>
                         </div>
                     </div>
+                </div> */}
+                <div
+                    ref={card2Ref}
+                    className="border-r-[6px] border-emerald-600/60 lg:mr-auto mb-12"
+                >
+                    <div className="bg-emerald-600/60 p-6 mr-[4px] w-full max-w-[55rem] self-start shadow-lg">
+                        <div>
+                            <h3 className="text-[24pt] font-roboto font-bold text-white tracking-wide border-b border-white/20 pb-2 mb-4">
+                                CUSTOMERS FIRST
+                            </h3>
+                        </div>
+
+                        <div className="space-y-1 leading-relaxed">
+                            <p className="text-[14.8pt] font-roboto font-bold text-white text-justify [text-align-last:justify]">
+                                Customers are defined as Overall Society in a broad sense. The spirit of &quot;Customers First&quot; is to win
+                                persistent trust from the customer. To achieve this goal, we have to follow our own conscience and
+                                make the utmost efforts in every doing, based on the belief that the behaviour of individuals or the
+                                company will bring benefit and happiness to one&apos;s counterpart.
+                            </p>
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
         </section>
