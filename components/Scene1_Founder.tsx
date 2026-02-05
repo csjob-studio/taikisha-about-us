@@ -118,7 +118,7 @@ export default function Scene1_Founder() {
                                     N.A. MAKWANA
                                 </h2>
 
-                                <p className="text-[18pt] font-roboto font-bold text-white uppercase tracking-[0.3em] mt-1">
+                                <p className="text-[18pt] font-roboto font-bold text-white uppercase  mt-1">
                                     Founder Director
                                 </p>
 

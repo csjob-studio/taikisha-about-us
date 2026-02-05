@@ -88,8 +88,8 @@ export default function Scene4_ParallaxText() {
                                 understanding and support.
                             </p>
 
-                            <p className="font-semibold text-yellow-400 text-right">
-                                - &quot;Mr. Masashi Osada&quot;
+                            <p className="font-semibold text-xl md:text-2xl text-yellow-400 text-right">
+                                &quot;Mr. Masashi Osada&quot;
                             </p>
                         </div>
                     </div>
@@ -106,7 +106,7 @@ export default function Scene4_ParallaxText() {
 
                         {/* Left Side: Text (Fit Content, No Wrap) */}
                         <div className="w-auto shrink-0">
-                            <ul className="space-y-6 text-base font-light italic tracking-widest text-slate-100 drop-shadow-md py-6 whitespace-nowrap">
+                            <ul className="space-y-6 text-lg md:text-xl font-bold tracking-widest text-slate-100 drop-shadow-md py-6 whitespace-nowrap">
                                 {[
                                     "CUSTOMERS",
                                     "BUSINESS PARTNER",
@@ -117,12 +117,15 @@ export default function Scene4_ParallaxText() {
                                     "COMMUNITIES / SOCIETY"
                                 ].map((item, i) => (
                                     <li key={i} className="flex items-center gap-4 group">
-                                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)] group-hover:scale-150 transition-transform duration-300"></span>
-                                        <span className="group-hover:text-white transition-colors duration-300">{item}</span>
+                                        <span className="w-2 h-2 bg-blue-500 rounded-full shadow-[0_0_12px_rgba(59,130,246,0.9)] group-hover:scale-150 transition-transform duration-300"></span>
+                                        <span className="group-hover:text-white transition-colors duration-300">
+                                            {item}
+                                        </span>
                                     </li>
                                 ))}
                             </ul>
                         </div>
+
 
                         {/* Right Side: Triangle Image (Fills remaining space) */}
                         <div className="flex-1 w-full relative h-[400px] md:h-[700px]">
