@@ -151,6 +151,7 @@ const locations = companyLocations;
 //     );
 // }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function Marker({ lat, lng, Office, company, city, country, address, phone, fax, radius, isActive, onClick, onPointerOver, onPointerOut }: any) {
     const position = useMemo(() => calcPosFromLatLonRad(lat, lng, radius), [lat, lng, radius]);
     const [hovered, setHover] = useState(false);
@@ -180,7 +181,7 @@ function Marker({ lat, lng, Office, company, city, country, address, phone, fax,
     const quaternion = useMemo(() => {
         const dummy = new THREE.Object3D();
         dummy.position.set(position[0], position[1], position[2]);
-        dummy.lookAt(0, 0, 0); 
+        dummy.lookAt(0, 0, 0);
         return dummy.quaternion;
     }, [position]);
 
@@ -191,18 +192,18 @@ function Marker({ lat, lng, Office, company, city, country, address, phone, fax,
             {/* 1. Pulsing Ground Ring (Sonar Effect) */}
             <mesh scale={[ringScale, ringScale, 1]}>
                 <ringGeometry args={[0.08, 0.12, 32]} />
-                <meshBasicMaterial 
-                    color={isActive ? isActiveColor : "#9660fa"} 
-                    transparent 
-                    opacity={ringOpacity} 
+                <meshBasicMaterial
+                    color={isActive ? isActiveColor : "#9660fa"}
+                    transparent
+                    opacity={ringOpacity}
                 />
             </mesh>
 
             {/* 2. Tapered Pin Stem (Sharp Point) */}
             <mesh position={[0, 0, -pinHeight / 2]} rotation={[Math.PI / 2, 0, 0]}>
                 <coneGeometry args={[0.015, pinHeight, 12]} />
-                <meshStandardMaterial 
-                    color={hovered || isActive ? isActiveColor : "#ffffff"} 
+                <meshStandardMaterial
+                    color={hovered || isActive ? isActiveColor : "#ffffff"}
                     emissive={hovered || isActive ? isActiveColor : "#ffffff"}
                     emissiveIntensity={isActive ? 2 : 0.5}
                 />
@@ -229,7 +230,7 @@ function Marker({ lat, lng, Office, company, city, country, address, phone, fax,
                         emissiveIntensity={isActive ? 4 : 1}
                     />
                 </mesh>
-                
+
                 {/* Visual Detail: Small center dot on the pin head */}
                 <mesh position={[0, 0, -headRadius * 0.5]}>
                     <sphereGeometry args={[headRadius * 0.3, 12, 12]} />
@@ -304,6 +305,7 @@ function GlobeContent({ activeLocation, setActiveLocation }: GlobeContentProps) 
                     {...loc}
                     radius={2.01}
                     isActive={activeLocation === loc.Office}
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     onClick={(e: any) => {
                         e.stopPropagation();
                         // Clicking sets the new active location
@@ -383,9 +385,9 @@ export default function Globe3D() {
             >
                 <GlobeErrorBoundary fallback={<GlobeFallback />}>
                     <Suspense fallback={null}>
-                        <GlobeContent 
-                            activeLocation={activeLocation} 
-                            setActiveLocation={setActiveLocation} 
+                        <GlobeContent
+                            activeLocation={activeLocation}
+                            setActiveLocation={setActiveLocation}
                         />
                     </Suspense>
                 </GlobeErrorBoundary>
