@@ -66,8 +66,6 @@ export default function Scene5_Directory() {
                             <span className="relative z-10">Explore Locations</span>
                         </button>
 
-
-
                     </div>
 
                     {/* Right Side: 3D Interactive Globe */}

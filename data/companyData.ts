@@ -1,103 +1,105 @@
 export interface CompanyLocation {
-    country: string;
-    city: string;
-    Office: string;
-    company: string;
-    address: string;
-    phone?: string;
-    fax?: string;
-    lat: number;
-    lng: number;
+  country: string;
+  city: string;
+  Office: string;
+  company: string;
+  address: string;
+  phone?: string;
+  fax?: string;
+  lat: number;
+  lng: number;
 }
 
 export const companyLocations: CompanyLocation[] = [
-    // {
-    //     country: "India",
-    //     city: "Gurugram",
-    //     Office: "Head Office",
-    //     company: "Taikisha Engineering India Private Ltd.",
-    //     address: "Plot No.26, Udyog Vihar, Phase-4, Gurugram, Haryana, Pin-122015, India",
-    //     phone: "91-124-234-8246",
-    //     fax: "91-124-234-8247",
-    //     lat: 28.4941,
-    //     lng: 77.0809
-    // },
-    // {
-    //     country: "India",
-    //     city: "Manesar (Gurugram)",
-    //     Office: "TEI Technical Centre (Manesar)",
-    //     company: "Taikisha Engineering India Private Ltd.",
-    //     address: "Plot No.108, Sector-3, IMT Manesar, Gurugram-122052, India",
-    //     lat: 28.3739,
-    //     lng: 76.8441
-    // },
-     // ========================= INDIA =========================
+  // ========================= INDIA =========================
   {
     country: "India",
     city: "Gurugram",
-    Office: "Head Office",
-    company: "TEI Taikisha Engineering India Private Ltd.",
-    address: "Plot No.26, Udyog Vihar, Phase-4, Gurugram, Haryana, Pin-122015, India",
-    phone: "91-124-234-8246",
-    fax: "91-124-234-8247",
+    Office: "Corporate Office – Gurugram",
+    company: "Taikisha Engineering India Private Limited",
+    address:
+      "Plot No. 26, Udyog Vihar, Phase-IV, Gurugram, Haryana – 122015, India",
+    phone: "+91-124-234-8246",
+    fax: "+91-124-234-8247",
     lat: 28.4941,
-    lng: 77.0809
+    lng: 77.0809,
   },
   {
     country: "India",
     city: "Manesar (Gurugram)",
-    Office: "TEI Technical Centre (Manesar)",
-    company: "Taikisha Engineering India Private Ltd.",
-    address: "Plot No.108, Sector-3, IMT Manesar, Gurugram-122052, India",
+    Office: "TEI Technical Centre – Manesar",
+    company: "Taikisha Engineering India Private Limited",
+    address:
+      "Plot No. 108, Sector-3, IMT Manesar, Gurugram, Haryana – 122052, India",
+    phone: "+91-124-466-3900",
     lat: 28.3739,
-    lng: 76.8441
+    lng: 76.8441,
   },
   {
     country: "India",
     city: "Manesar (Gurugram)",
-    Office: "TEI Electrical & Automation Control Panel Plant Manesar",
-    company: "Taikisha Engineering India Private Ltd.",
-    address: "Plot No.19, Sector-3, IMT Manesar, Gurugram-122050, India",
+    Office: "TEI Electrical & Automation Control Panel Plant – Manesar",
+    company: "Taikisha Engineering India Private Limited",
+    address:
+      "Plot No. 19, Sector-3, IMT Manesar, Gurugram, Haryana – 122050, India",
+    phone: "+91-124-466-9000",
+    fax: "+91-124-234-8247",
     lat: 28.47,
-    lng: 77.06
+    lng: 77.06,
   },
   {
     country: "India",
     city: "Thane (Mumbai)",
     Office: "TEI Mumbai Office",
-    company: "Taikisha Engineering India Private Ltd.",
-    address: "210, 2nd Floor, Opal Square, Wagle Industrial Area, Thane-400604, India",
-    lat: 19.18,
-    lng: 72.98
-  },
-  {
-    country: "India",
-    city: "Pune",
-    Office: "TEI MFG Plant Pune",
-    company: "Taikisha Engineering India Private Ltd.",
-    address: "GAT No.321/323, Village Kondapuri, Taluka Shirur, Dist. Pune-412209, India",
-    lat: 18.7264,
-    lng: 74.2001
-  },
-  {
-    country: "India",
-    city: "Pune",
-    Office: "TEI Conveyor Factory Pune",
-    company: "Taikisha Engineering India Private Ltd.",
-    address: "Industrial Plot No.BG-71/1/4, Indrayani Chowk, MIDC Bhosari, Pune-411026, India",
-    lat: 18.651,
-    lng: 73.847
-  },
-  {
-    country: "India",
-    city: "Hyderabad (Sangareddy District)",
-    Office: "TEI Nicomac Taikisha Clean Rooms Private Limited",
-    company: "Nicomac Taikisha Clean Rooms Private Limited",
+    company: "Taikisha Engineering India Private Limited",
     address:
-      "Plot No.116, IDA Bollaram, Near Miyapur, Sangareddy District, Hyderabad Medak Telangana 50232, India",
-    phone: "91-951-519-2020",
-    lat: 17.5443,
-    lng: 78.3486
+      "210, 2nd Floor, Opal Square, Wagle Industrial Area, Thane, Maharashtra – 400604, India",
+    phone: "+91-22-4600-9890",
+    lat: 19.18,
+    lng: 72.98,
+  },
+  {
+    country: "India",
+    city: "Pune",
+    Office: "TEI Manufacturing Plant – Pune",
+    company: "Taikisha Engineering India Private Limited",
+    address:
+      "GAT No. 321/323, Village Kondapuri, Taluka Shirur, District Pune – 412209, Maharashtra, India",
+    phone: "02137-666000",
+    fax: "02137-666052/53",
+    lat: 18.7264,
+    lng: 74.2001,
+  },
+  {
+    country: "India",
+    city: "Pune",
+    Office: "TEI Conveyor Factory – Pune",
+    company: "Taikisha Engineering India Private Limited",
+    address:
+      "Industrial Plot No. BG-71/1/4, Indrayani Chowk, MIDC Bhosari, Pune, Maharashtra – 411026, India",
+    phone: "+91-20-68194571",
+    lat: 18.651,
+    lng: 73.847,
+  },
+  {
+    country: "India",
+    city: "Chennai",
+    Office: "TEI Chennai Office",
+    company: "Taikisha Engineering India Private Limited",
+    address:
+      "5th Floor, No. 16, DAL Building, Rajiv Gandhi Salai, Karapakkam, Chennai, Tamil Nadu – 600097, India",
+    lat: 12.9165,   // Chennai – OMR / Karapakkam area (approx)
+    lng: 80.2299
+  },
+  {
+    country: "India",
+    city: "Jamshedpur",
+    Office: "TEI Jamshedpur Plant",
+    company: "Taikisha Engineering India Private Limited",
+    address:
+      "Plot No. 772 & 772/A, Mouza Pendrabera, District Seraikella Kharsawan, Jharkhand – 832108, India",
+    lat: 22.8046,   // Jamshedpur city center
+    lng: 86.2029
   },
 
   // ========================= JAPAN (General) =========================
