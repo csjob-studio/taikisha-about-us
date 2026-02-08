@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const frameCount = 23;
+const frameCount = 25;
 const currentFrame = (index: number) => 
     `/images/scene3/sequence/frame_${index + 1}.png`;
 
